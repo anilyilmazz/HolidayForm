@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewData["Title"] = "Kullanıcı İzinleri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kullanıcı İzinleri</h2>
+
+<div class="container">
+    <table class="table table-bordered" id="example">
+        <thead>
+            <tr>
+                <th>İzin Sahibi</th>
+                <th>İzin Başlangıç</th>
+                <th>İzin Bitiş</th>
+                <th>İzin Oluşturulan Tarih</th>
+                <th>Gün Sayısı</th>
+                @*<th>İzin Sil</th>*@
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<script>
+    function deleteClick(id) {
+        window.location.href = '@Url.Action("Holiday", "HolidayDelete")' + '/' + id
+
+    }
+
+    $('#assets-data-table').on("click", ".editAsset", function (event) {
+
+        event.preventDefault();
+
+        var url = $(this).attr("href");
+
+        $.get(url, function (data) {
+            $('#editAssetContainer').html(data);
+
+            $('#editAssetModal').modal('show');
+        });
+
+    });
+    $(document).ready(function () {
+
+        var p1 = 5;
+        $('#example').DataTable({
+
+            "ajax": {
+                "url": "GetsHoliday",
+                "dataSrc": ""
+            },
+            "columns": [
+                { "data": "user" },
+                { "data": "startDate" },
+                { "data": "endDate" },
+                { "data": "createDate" },
+                { "data": "createDate" },       
+                //{
+                //    "title": "Actions",
+                //    "veri": "5",
+                //    "data": null,
+                //    'defaultContent': '<button type ="button" class="btn btn-default" id="userId" onclick="deleteClick('+'veri'+')">Sil</button>',
+                //    "targets": -1,
+                //},
+                {
+                  "title": "Sil",
+                    "data": "id",
+                  "searchable": false,
+                  "sortable": false,
+                    "render": function (data, type, row) {
+                        var veri = data;
+                        return '<a href="@Url.Action("HolidayDelete", "Holiday")/' + veri + '" class="editAsset">Sil</a>';
+                     }
+                 }
+                
+
+
+                
+            ]
+        });
+
+      
+    });
+   
+</script> 

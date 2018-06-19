@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewData["Title"] = "İzinlerim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Benim izinlerin</h2>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>İzin Başlangıç</th>
+                <th>İzin Bitiş</th>
+                <th>İznin Oluşturulma Tarihi</th>
+                <th>Gün Sayısı</th>
+                <th>İzin Sil</th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tbody>
+                @*<td>@item.Id</td>*@
+                <td>@item.StartDate.ToString("dd-MM-yyyy")</td>
+                <td>@item.EndDate.ToString("dd-MM-yyyy")</td>
+                <td>@item.RequestDate.ToString("dd-MM-yyyy")</td>
+                <td>@(item.EndDate - item.StartDate)</td>
+                <td><button  type="button" class="btn btn-default" asp-controller="Holiday" asp-action="HolidayDelete" asp-route-id="@item.Id">Sil</button></td>
+            </tbody>
+        }
+
+    </table>
+</div>
