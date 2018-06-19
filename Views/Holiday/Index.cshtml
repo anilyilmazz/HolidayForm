@@ -4,31 +4,51 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Benim izinlerin</h2>
+<h2>İzinlerim</h2>
 
 <div class="container">
-    <table class="table">
+    <table class="table table-bordered" id="example">
         <thead>
             <tr>
+                <th>İzin Sahibi</th>
                 <th>İzin Başlangıç</th>
                 <th>İzin Bitiş</th>
-                <th>İznin Oluşturulma Tarihi</th>
+                <th>İzin Oluşturulan Tarih</th>
                 <th>Gün Sayısı</th>
-                <th>İzin Sil</th>
+                <th>Sil</th>
             </tr>
         </thead>
-
-        @foreach (var item in Model)
-        {
-            <tbody>
-                @*<td>@item.Id</td>*@
-                <td>@item.StartDate.ToString("dd-MM-yyyy")</td>
-                <td>@item.EndDate.ToString("dd-MM-yyyy")</td>
-                <td>@item.RequestDate.ToString("dd-MM-yyyy")</td>
-                <td>@(item.EndDate - item.StartDate)</td>
-                <td><button  type="button" class="btn btn-default" asp-controller="Holiday" asp-action="HolidayDelete" asp-route-id="@item.Id">Sil</button></td>
-            </tbody>
-        }
-
+        <tbody></tbody>
     </table>
 </div>
+<script>
+    $(document).ready(function () {
+
+        $('#example').DataTable({
+
+            "ajax": {
+                "url": "Holiday/GetsMyHoliday",
+                "dataSrc": ""
+            },
+            "columns": [
+                { "data": "user" },
+                { "data": "startDate" },
+                { "data": "endDate" },
+                { "data": "createDate" },
+                { "data": "createDate" },
+                {
+                  "title": "Sil",
+                  "data": "id",
+                  "searchable": false,
+                  "sortable": false,
+                    "render": function (data, type, row) {
+                        var veri = data;
+                        return '<a href="@Url.Action("HolidayDelete", "Holiday")/' + veri + '">Sil</a>';
+                     }
+                 }
+
+            ]
+        });
+    });
+
+</script> 

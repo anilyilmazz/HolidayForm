@@ -30,6 +30,15 @@ namespace IzinFormu.Controllers
             return View(myholidaylist);
         }
 
+        public JsonResult GetsMyHoliday()
+        {
+            ApplicationUser user = _usermanager.FindByNameAsync(HttpContext.User.Identity.Name).Result;
+            var myholidaylist = _ctx.Holiday.Where(a => a.User.Id == user.Id).Select(s => new HolidayViewModel() { CreateDate = s.CreateDate, Department = s.Department, EndDate = s.EndDate, Manager = s.Manager, RequestDate = s.RequestDate, StartDate = s.StartDate, User = s.User.Name, UserId = s.User.Id, Id = s.Id }).ToList();
+            return Json(myholidaylist);
+        }
+
+
+
         [Authorize]
         public IActionResult HolidayDelete(int Id)
         {
