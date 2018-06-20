@@ -70,6 +70,7 @@ namespace IzinFormu.Controllers
                 int fridaycount = 0;
                 for (DateTime friday = i.StartDate; friday <= i.EndDate; friday = friday.AddDays(1))
                 {
+                   string deneme =  friday.Year.ToString();
                     holidaycount++;
                     if(friday.DayOfWeek == DayOfWeek.Friday)
                     {

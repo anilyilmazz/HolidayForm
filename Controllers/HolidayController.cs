@@ -34,7 +34,6 @@ namespace IzinFormu.Controllers
         {
             ApplicationUser user = _usermanager.FindByNameAsync(HttpContext.User.Identity.Name).Result;
             var myholidaylist = _ctx.Holiday.Where(a => a.User.Id == user.Id).Select(s => new HolidayViewModel() { CreateDate = s.CreateDate, Department = s.Department, EndDate = s.EndDate, Manager = s.Manager, RequestDate = s.RequestDate, StartDate = s.StartDate, User = s.User.Name, UserId = s.User.Id, Id = s.Id ,StartDateString =s.StartDate.ToString("dd-MM-yyyy") ,EndDateString = s.EndDate.ToString("dd-MM-yyyy") ,CreateDateString =s.CreateDate.ToString("dd-MM-yyyy"),HolidayTime ="5"}).ToList();
-
             foreach (var i in myholidaylist)
             {
                 int holidaycount = -1;
@@ -51,9 +50,6 @@ namespace IzinFormu.Controllers
                 i.HolidayTime = (holidaycount + fridaycount).ToString();
 
             }
-
-
-
             return Json(myholidaylist);
         }
 
@@ -119,6 +115,34 @@ namespace IzinFormu.Controllers
 
             return RedirectToAction("Index", "Holiday");
         }
+
+        [Authorize]
+        public IActionResult GetHolidayHtml(int Id)
+        {
+            //ApplicationUser user = _usermanager.FindByNameAsync(HttpContext.User.Identity.Name).Result;
+            var myholidaylist = _ctx.Holiday.Where(a => a.Id == Id).Select(s => new HolidayViewModel() { CreateDate = s.CreateDate, Department = s.Department, EndDate = s.EndDate, Manager = s.Manager, RequestDate = s.RequestDate, StartDate = s.StartDate, User = s.User.Name, UserId = s.User.Id, Id = s.Id, StartDateString = s.StartDate.ToString("dd-MM-yyyy"), EndDateString = s.EndDate.ToString("dd-MM-yyyy"), CreateDateString = s.CreateDate.ToString("dd-MM-yyyy"), HolidayTime = "5" }).ToList();
+            foreach (var i in myholidaylist)
+            {
+                int holidaycount = -1;
+                int fridaycount = 0;
+                for (DateTime friday = i.StartDate; friday <= i.EndDate; friday = friday.AddDays(1))
+                {
+                    holidaycount++;
+                    if (friday.DayOfWeek == DayOfWeek.Friday)
+                    {
+                        fridaycount++;
+                    }
+
+                }
+                i.HolidayTime = (holidaycount + fridaycount).ToString();
+
+            }
+            return View(myholidaylist);
+        }
+
+        
+
+
 
 
     }
