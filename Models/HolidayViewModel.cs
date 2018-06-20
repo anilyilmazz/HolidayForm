@@ -24,7 +24,6 @@ namespace IzinFormu.Models
         [Display(Name = "Form Tarihi")]
         public DateTime RequestDate { get; set; }
 
-
         [Display(Name = "Departman")]
         public string Department { get; set; }
 
@@ -39,7 +38,6 @@ namespace IzinFormu.Models
 
         [Display(Name = "Holiday Id")]
         public int Id { get; set; }
-
 
     }
 }
