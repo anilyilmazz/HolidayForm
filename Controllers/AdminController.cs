@@ -62,7 +62,25 @@ namespace IzinFormu.Controllers
 
         public JsonResult GetsHoliday()
         {
-            var allholidaylist = _ctx.Holiday.Select(s => new HolidayViewModel() {CreateDate = s.CreateDate, Department = s.User.Department, EndDate = s.EndDate, Manager = s.User.Manager, RequestDate = s.RequestDate, StartDate = s.StartDate, User = s.User.Name, UserId = s.User.Id, Id=s.Id }).ToList();
+            var allholidaylist = _ctx.Holiday.Select(s => new HolidayViewModel() {CreateDate = s.CreateDate, Department = s.User.Department, EndDate = s.EndDate, Manager = s.User.Manager, RequestDate = s.RequestDate, StartDate = s.StartDate, User = s.User.Name, UserId = s.User.Id, Id=s.Id , StartDateString = s.StartDate.ToString("dd-MM-yyyy"), EndDateString = s.EndDate.ToString("dd-MM-yyyy"), CreateDateString = s.CreateDate.ToString("dd-MM-yyyy") }).ToList();
+
+            foreach (var i in allholidaylist)
+            {
+                int holidaycount = -1;
+                int fridaycount = 0;
+                for (DateTime friday = i.StartDate; friday <= i.EndDate; friday = friday.AddDays(1))
+                {
+                    holidaycount++;
+                    if(friday.DayOfWeek == DayOfWeek.Friday)
+                    {
+                        fridaycount++;
+                    }
+                    
+                }
+                i.HolidayTime = (holidaycount+fridaycount).ToString();
+
+            }
+
             return Json(allholidaylist);
         }
     }

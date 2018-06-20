@@ -39,5 +39,11 @@ namespace IzinFormu.Models
         [Display(Name = "Holiday Id")]
         public int Id { get; set; }
 
+        public string StartDateString { get; set; }
+        public string EndDateString { get; set; }
+        public string CreateDateString { get; set; }
+        public string HolidayTime { get; set; }
+
+
     }
 }
