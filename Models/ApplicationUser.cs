@@ -14,6 +14,6 @@ namespace IzinFormu.Models
         public string Department { get; set; }
         public string Manager { get; set; }
         public DateTime CreateDate { get; set; }
-        public Departments DepartmanId { get; set; }
+
     }
 }

@@ -4,8 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
 namespace IzinFormu.Data.Migrations
@@ -31,8 +29,6 @@ namespace IzinFormu.Data.Migrations
                         .IsConcurrencyToken();
 
                     b.Property<DateTime>("CreateDate");
-
-                    b.Property<int?>("DepartmanIdId");
 
                     b.Property<string>("Department");
 
@@ -70,10 +66,6 @@ namespace IzinFormu.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DepartmanIdId")
-                        .IsUnique()
-                        .HasFilter("[DepartmanIdId] IS NOT NULL");
-
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
 
@@ -83,18 +75,6 @@ namespace IzinFormu.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("IzinFormu.Models.Departments", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("DDepartmentName");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("IzinFormu.Models.Holiday", b =>
@@ -229,13 +209,6 @@ namespace IzinFormu.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("IzinFormu.Models.ApplicationUser", b =>
-                {
-                    b.HasOne("IzinFormu.Models.Departments", "DepartmanId")
-                        .WithOne("user")
-                        .HasForeignKey("IzinFormu.Models.ApplicationUser", "DepartmanIdId");
                 });
 
             modelBuilder.Entity("IzinFormu.Models.Holiday", b =>

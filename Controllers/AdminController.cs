@@ -84,24 +84,26 @@ namespace IzinFormu.Controllers
             return Json(allholidaylist);
         }
 
-        [Authorize]
-        public IActionResult DepartmentCreate()
-        {
-            ViewBag.users = _ctx.Users.ToList();
-            return View();
-        }
+        //[Authorize]
+        //public IActionResult DepartmentCreate()
+        //{
+        //    ViewBag.users = _ctx.Users.ToList();
+        //    return View();
+        //}
 
-        [Authorize]
-        [HttpPost]
-        public IActionResult DepartmentCreate(DepartmentsViewModel model)
-        {
-            ApplicationUser user = _usermanager.FindByEmailAsync(model.user).Result;
-            var Department = new Departments();
-            Department.DDepartmentName = model.DDepartmentName;
-            Department.User = user;
+        //[Authorize]
+        //[HttpPost]
+        //public IActionResult DepartmentCreate(DepartmentsViewModel model)
+        //{
+        //    ApplicationUser user = _usermanager.FindByEmailAsync(model.User).Result;
+        //    var Department = new Departments();
+        //    Department.DDepartmentName = model.DDepartmentName;
+        //    Department.User = user;
+            
+            
            
  
-            return View();
-        }
+        //    return View();
+        //}
     }
 }

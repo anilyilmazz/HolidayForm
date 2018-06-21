@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace IzinFormu.Models
 {
-    public class Holiday
+    public class dene
     {
         public int Id { get; set; }
         public ApplicationUser User { get; set; }
@@ -16,6 +16,6 @@ namespace IzinFormu.Models
         public string Department { get; set; }
         public string Manager { get; set; }
         public string icerik { get; set; }
-        
+
     }
 }

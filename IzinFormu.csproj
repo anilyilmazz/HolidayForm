@@ -5,6 +5,45 @@
     <UserSecretsId>aspnet-IzinFormu-3DCE989D-77C0-4546-A94A-6C7E6987BEB2</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20180621122616_migr6.cs" />
+    <Compile Remove="Data\Migrations\20180621122616_migr6.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180621122849_migr6.cs" />
+    <Compile Remove="Data\Migrations\20180621122849_migr6.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180621124247_migr3.cs" />
+    <Compile Remove="Data\Migrations\20180621124247_migr3.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180621124449_migr3.cs" />
+    <Compile Remove="Data\Migrations\20180621124449_migr3.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180621125129_migr3.cs" />
+    <Compile Remove="Data\Migrations\20180621125129_migr3.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180621125203_migr3.cs" />
+    <Compile Remove="Data\Migrations\20180621125203_migr3.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180621125233_migr3.cs" />
+    <Compile Remove="Data\Migrations\20180621125233_migr3.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180621125625_migr3.cs" />
+    <Compile Remove="Data\Migrations\20180621125625_migr3.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180621130331_migr3.cs" />
+    <Compile Remove="Data\Migrations\20180621130331_migr3.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180621131051_migr3.cs" />
+    <Compile Remove="Data\Migrations\20180621131051_migr3.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180621131445_migr4.cs" />
+    <Compile Remove="Data\Migrations\20180621131445_migr4.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180621131706_migr3.cs" />
+    <Compile Remove="Data\Migrations\20180621131706_migr3.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180621131939_migr3.cs" />
+    <Compile Remove="Data\Migrations\20180621131939_migr3.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180621132226_Initial.cs" />
+    <Compile Remove="Data\Migrations\20180621132226_Initial.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180621132943_Muzik.cs" />
+    <Compile Remove="Data\Migrations\20180621132943_Muzik.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180621133751_Muzik2.cs" />
+    <Compile Remove="Data\Migrations\20180621133751_Muzik2.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180621133830_Muzik3.cs" />
+    <Compile Remove="Data\Migrations\20180621133830_Muzik3.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180621134052_Dene.cs" />
+    <Compile Remove="Data\Migrations\20180621134052_Dene.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
