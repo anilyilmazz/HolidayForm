@@ -59,7 +59,6 @@ namespace IzinFormu.Controllers
         {
             return View();
         }
-
         public JsonResult GetsHoliday()
         {
             var allholidaylist = _ctx.Holiday.Select(s => new HolidayViewModel() {CreateDate = s.CreateDate, Department = s.User.Department, EndDate = s.EndDate, Manager = s.User.Manager, RequestDate = s.RequestDate, StartDate = s.StartDate, User = s.User.Name, UserId = s.User.Id, Id=s.Id , StartDateString = s.StartDate.ToString("dd-MM-yyyy"), EndDateString = s.EndDate.ToString("dd-MM-yyyy"), CreateDateString = s.CreateDate.ToString("dd-MM-yyyy") }).ToList();
@@ -83,6 +82,26 @@ namespace IzinFormu.Controllers
             }
 
             return Json(allholidaylist);
+        }
+
+        [Authorize]
+        public IActionResult DepartmentCreate()
+        {
+            ViewBag.users = _ctx.Users.ToList();
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult DepartmentCreate(DepartmentsViewModel model)
+        {
+            ApplicationUser user = _usermanager.FindByEmailAsync(model.user).Result;
+            var Department = new Departments();
+            Department.DDepartmentName = model.DDepartmentName;
+            Department.User = user;
+           
+ 
+            return View();
         }
     }
 }

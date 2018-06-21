@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "549ccf6fad0412cebc4ed4e8873f653bfaca7499"
+    "signature": "d33c708fb2a97837b53e0e8c549d59139bbb679c"
   },
   "compilationOptions": {
     "defines": [
@@ -27,6 +27,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "2.0.2",
           "Microsoft.NETCore.App": "2.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.3",
+          "Select.HtmlToPdf": "18.3.1",
           "Select.HtmlToPdf.NetCore": "18.3.0"
         },
         "runtime": {
@@ -2701,6 +2702,7 @@
           }
         }
       },
+      "Select.HtmlToPdf/18.3.1": {},
       "Select.HtmlToPdf.NetCore/18.3.0": {
         "dependencies": {
           "System.Drawing.Common": "4.5.0",
@@ -5680,6 +5682,13 @@
       "sha512": "sha512-YhEdSQUsTx+C8m8Bw7ar5/VesXvCFMItyZF7G1AUY+OM0VPZUOeAVpJ4Wl6fydBGUYZxojTDR3I6Bj/+BPkJNA==",
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
+    },
+    "Select.HtmlToPdf/18.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-A5l2yVGirR9ldnrH3THQy8lVlHiDsDHzHkWokciLtckniarvnx2y2JBM07I/3omKoCMjrf3TVzLo3R7fYlExJg==",
+      "path": "select.htmltopdf/18.3.1",
+      "hashPath": "select.htmltopdf.18.3.1.nupkg.sha512"
     },
     "Select.HtmlToPdf.NetCore/18.3.0": {
       "type": "package",

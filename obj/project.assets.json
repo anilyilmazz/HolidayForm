@@ -3141,6 +3141,17 @@
           }
         }
       },
+      "Select.HtmlToPdf/18.3.1": {
+        "type": "package",
+        "contentFiles": {
+          "contentFiles/any/any/Select.Html.dep": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "Select.Html.dep"
+          }
+        }
+      },
       "Select.HtmlToPdf.NetCore/18.3.0": {
         "type": "package",
         "dependencies": {
@@ -8377,6 +8388,23 @@
         "version.txt"
       ]
     },
+    "Select.HtmlToPdf/18.3.1": {
+      "sha512": "A5l2yVGirR9ldnrH3THQy8lVlHiDsDHzHkWokciLtckniarvnx2y2JBM07I/3omKoCMjrf3TVzLo3R7fYlExJg==",
+      "type": "package",
+      "path": "select.htmltopdf/18.3.1",
+      "files": [
+        "contentFiles/any/any/Select.Html.dep",
+        "lib/net20/Select.Html.dep",
+        "lib/net20/Select.HtmlToPdf.dll",
+        "lib/net20/Select.HtmlToPdf.xml",
+        "lib/net40/Select.Html.dep",
+        "lib/net40/Select.HtmlToPdf.dll",
+        "lib/net40/Select.HtmlToPdf.xml",
+        "readme.txt",
+        "select.htmltopdf.18.3.1.nupkg.sha512",
+        "select.htmltopdf.nuspec"
+      ]
+    },
     "Select.HtmlToPdf.NetCore/18.3.0": {
       "sha512": "EXHumjiO8k/ESK1JiduPbvDsVkKjpA/xrnrrSvBvedIWl+RXaeXNjcO9TaVc8VGZ9Cvj1LTsjsD0Y2/UVYQYAA==",
       "type": "package",
@@ -13261,6 +13289,7 @@
       "Microsoft.EntityFrameworkCore.Tools >= 2.0.2",
       "Microsoft.NETCore.App >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.3",
+      "Select.HtmlToPdf >= 18.3.1",
       "Select.HtmlToPdf.NetCore >= 18.3.0"
     ]
   },
@@ -13323,6 +13352,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[2.0.3, )"
+          },
+          "Select.HtmlToPdf": {
+            "target": "Package",
+            "version": "[18.3.1, )"
           },
           "Select.HtmlToPdf.NetCore": {
             "target": "Package",

@@ -23,6 +23,12 @@
     </table>
 </div>
 <script>
+    function pdfcreate() {
+        alert("Pdf Oluşturuldu.")
+
+    }
+
+
     $(document).ready(function () {
         $('#example').DataTable({
             "ajax": {
@@ -51,7 +57,7 @@
                   "sortable": false,
                     "render": function (data, type, row) {
                         var veri = data;
-                        return '<a href="@Url.Action("GetHolidayPdf", "Holiday")/' + veri + '">Pdf</a>';},
+                        return '<a onclick="pdfcreate()" href="@Url.Action("GetHolidayPdf", "Holiday")/' + veri + '">Pdf</a>';},
                 },
             ]
         });

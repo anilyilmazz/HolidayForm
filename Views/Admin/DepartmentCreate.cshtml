@@ -1,0 +1,34 @@
+﻿@model DepartmentsViewModel
+@{
+    ViewData["Title"] = "DepartmentCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DepartmentCreate</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+            <h4>İzin Oluştur</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="DDepartmentName"></label>
+                <input type="text" asp-for="DDepartmentName" class="form-control" />
+                <span asp-validation-for="DDepartmentName" class="text-danger"></span>
+            </div>
+
+            <label asp-for="User"></label>
+            <select asp-for="User"  class="form-control" id="sel1">
+                @foreach (var item in ViewBag.users)
+                        {
+                            <option>@item.Email</option>
+                }
+            </select>
+            <span asp-validation-for="User" class="text-danger"></span>
+            <button type="submit" class="btn btn-default">Departman Oluştur</button>
+        </form>
+    </div>
+</div>
+

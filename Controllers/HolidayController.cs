@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using IzinFormu.Data;
@@ -15,6 +16,7 @@ namespace IzinFormu.Controllers
     public class HolidayController : Controller
     {
         private string url;
+        public string local;
         private UserManager<ApplicationUser> _usermanager;
         private ApplicationDbContext _ctx;
 
@@ -143,9 +145,11 @@ namespace IzinFormu.Controllers
         public override void OnActionExecuting(ActionExecutingContext context)
         {
             url = context.HttpContext.Request.Host.ToString();
+            
         }
         public IActionResult GetHolidayPdf(int Id)
         {
+            
             var pdflist = _ctx.Holiday.Where(a => a.Id == Id).Select(s => new HolidayViewModel() { User = s.User.Name, RequestDate = s.RequestDate }).ToList();
             string pdfname = ("IzınPdf/"+pdflist[0].User +"-"+ pdflist[0].RequestDate.ToString("dd-MM-yyyy-HH-mm-ss") +".pdf").ToString();
             string pdfurl = "https://" + url + "/Holiday/GetHolidayHtml/" + Id;
@@ -153,7 +157,8 @@ namespace IzinFormu.Controllers
             SelectPdf.PdfDocument doc = converter.ConvertUrl(pdfurl);
             doc.Save(pdfname);
             doc.Close();
-            return View();
+            return File(System.IO.File.ReadAllBytes(pdfname), "application/pdf", pdflist[0].User + "-" + pdflist[0].RequestDate.ToString("dd-MM-yyyy-HH-mm-ss") + ".pdf");
+
         }
     }
 }
