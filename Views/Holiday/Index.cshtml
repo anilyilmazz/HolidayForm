@@ -16,6 +16,7 @@
                 <th>İzin Oluşturulan Tarih</th>
                 <th>İzin Süresi</th>
                 <th>Html</th>
+                <th>Pdf</th>
             </tr>
         </thead>
         <tbody></tbody>
@@ -35,15 +36,23 @@
                 { "data": "createDateString" },
                 { "data": "holidayTime" },  
                 {
-                  "title": "Düzenle",
+                  "title": "Html",
                   "data": "id",
                   "searchable": false,
                   "sortable": false,
                     "render": function (data, type, row) {
                         var veri = data;
-                        return '<a href="@Url.Action("GetHolidayHtml", "Holiday")/' + veri + '">Html</a>';
-                     }
-                }
+                        return '<a href="@Url.Action("GetHolidayHtml", "Holiday")/' + veri + '">Html</a>';},
+                },
+                {
+                  "title": "Pdf",
+                  "data": "id",
+                  "searchable": false,
+                  "sortable": false,
+                    "render": function (data, type, row) {
+                        var veri = data;
+                        return '<a href="@Url.Action("GetHolidayPdf", "Holiday")/' + veri + '">Pdf</a>';},
+                },
             ]
         });
     });

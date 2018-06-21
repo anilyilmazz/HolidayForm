@@ -22,3 +22,4 @@ C:\Users\anily\Desktop\IzinFormu\IzinFormu\obj\Debug\netcoreapp2.0\IzinFormu.Ass
 C:\Users\anily\Desktop\IzinFormu\IzinFormu\obj\Debug\netcoreapp2.0\IzinFormu.dll
 C:\Users\anily\Desktop\IzinFormu\IzinFormu\obj\Debug\netcoreapp2.0\IzinFormu.pdb
 C:\Users\anily\Desktop\IzinFormu\IzinFormu\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\anily\Desktop\IzinFormu\IzinFormu\bin\Debug\netcoreapp2.0\Select.Html.dep

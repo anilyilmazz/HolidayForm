@@ -5,13 +5,16 @@ using System.Threading.Tasks;
 using IzinFormu.Data;
 using IzinFormu.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace IzinFormu.Controllers
 {
     public class HolidayController : Controller
     {
+        private string url;
         private UserManager<ApplicationUser> _usermanager;
         private ApplicationDbContext _ctx;
 
@@ -116,10 +119,9 @@ namespace IzinFormu.Controllers
             return RedirectToAction("Index", "Holiday");
         }
 
-        [Authorize]
+      
         public IActionResult GetHolidayHtml(int Id)
         {
-            //ApplicationUser user = _usermanager.FindByNameAsync(HttpContext.User.Identity.Name).Result;
             var myholidaylist = _ctx.Holiday.Where(a => a.Id == Id).Select(s => new HolidayViewModel() { CreateDate = s.CreateDate, Department = s.Department, EndDate = s.EndDate, Manager = s.Manager, RequestDate = s.RequestDate, StartDate = s.StartDate, User = s.User.Name, UserId = s.User.Id, Id = s.Id, StartDateString = s.StartDate.ToString("dd-MM-yyyy"), EndDateString = s.EndDate.ToString("dd-MM-yyyy"), CreateDateString = s.CreateDate.ToString("dd-MM-yyyy"), HolidayTime = "5" }).ToList();
             foreach (var i in myholidaylist)
             {
@@ -135,15 +137,23 @@ namespace IzinFormu.Controllers
 
                 }
                 i.HolidayTime = (holidaycount + fridaycount).ToString();
-
             }
             return View(myholidaylist);
         }
-
-        
-
-
-
-
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            url = context.HttpContext.Request.Host.ToString();
+        }
+        public IActionResult GetHolidayPdf(int Id)
+        {
+            var pdflist = _ctx.Holiday.Where(a => a.Id == Id).Select(s => new HolidayViewModel() { User = s.User.Name, RequestDate = s.RequestDate }).ToList();
+            string pdfname = ("IzınPdf/"+pdflist[0].User +"-"+ pdflist[0].RequestDate.ToString("dd-MM-yyyy-HH-mm-ss") +".pdf").ToString();
+            string pdfurl = "https://" + url + "/Holiday/GetHolidayHtml/" + Id;
+            SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
+            SelectPdf.PdfDocument doc = converter.ConvertUrl(pdfurl);
+            doc.Save(pdfname);
+            doc.Close();
+            return View();
+        }
     }
 }
